@@ -1,0 +1,41 @@
+<!-- contactapp/templates/contactapp/contact_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <!-- Add your CSS styles here if needed -->
+</head>
+<body>
+
+<div style="margin: 20px;">
+    <h2>Contact List</h2>
+    <a href=""><button>Create Contact</button></a>
+
+    <table border="1" style="width:100%; margin-top: 20px;">
+        <thead>
+            <tr>
+                <th>Serial Number</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.serial_number }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.date_created }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
