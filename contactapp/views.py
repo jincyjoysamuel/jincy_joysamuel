@@ -1,14 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Contact
-# Create your views here.
-def page2(request):
-    return render(request, "contact/page2.html")
+from .forms import ContactForm
 
-def createcontact(request):
-    return render(request, "contact/createcontact.html")
-
-
-
-def contact_list(request):
+def startpage(request):
     contacts = Contact.objects.all()
-    return render(request, 'contact/contactlist.html', {'contacts': contacts})
+    return render(request, 'contact/startpage.html', {'contacts': contacts})
+
+def create_contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('startpage')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact/create_contact.html', {'form': form})

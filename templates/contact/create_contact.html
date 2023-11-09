@@ -1,0 +1,37 @@
+<!-- contactapp/templates/contactapp/create_contact.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'contact/formstyle.css' %}">
+
+    <title>Create Contact</title>
+    <!-- Add your CSS styles here if needed -->
+</head>
+<body>
+
+<div class="container">
+    <h1 class="center-heading">Create Contact</h1>
+    
+    <form method="post" action="{% url 'create_contact' %}">
+        {% csrf_token %}
+        <label for="contact_name">Contact Name:</label>
+        <input type="text" name="contact_name" required><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <button type="submit">Create Contact</button>
+        <a href="{% url 'startpage' %}"><button type="button">Cancel</button></a>
+    </form>
+
+    <p class="copyright"> &copy; Created by Jincy</p>
+
+    <a href="{% url 'startpage' %}">Back to Contact List</a>
+</div>
+
+</body>
+</html>
