@@ -1,4 +1,3 @@
-<!-- contactapp/templates/contactapp/create_contact.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +17,36 @@
     
     <form method="post" action="{% url 'create_contact' %}">
         {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="error-message">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
         <label for="contact_name">Contact Name:</label>
-        <input type="text" name="contact_name" required><br>
+        <input type="text" name="contact_name" value="{{ form.cleaned_data.contact_name }}" required>
+        {% if form.contact_name.errors %}
+            <div class="error-message">
+                {{ form.contact_name.errors.0 }}
+            </div>
+        {% endif %}<br>
         
         <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+        <input type="email" name="email" value="{{ form.cleaned_data.email }}" required>
+        {% if form.email.errors %}
+            <div class="error-message">
+                {{ form.email.errors.0 }}
+            </div>
+        {% endif %}<br>
+
+        <label for="notes">Notes:</label>
+        <textarea name="notes" rows="4" cols="50" required>{{ form.cleaned_data.notes }}</textarea>
+        {% if form.notes.errors %}
+            <div class="error-message">
+                {{ form.notes.errors.0 }}
+            </div>
+        {% endif %}<br>
 
         <button type="submit">Create Contact</button>
         <a href="{% url 'startpage' %}"><button type="button">Cancel</button></a>
@@ -30,7 +54,7 @@
 
     <p class="copyright"> &copy; Created by Jincy</p>
 
-    <a href="{% url 'startpage' %}">Back to Contact List</a>
+    <a href="{% url 'startpage' %}">Back to StartPage</a>
 </div>
 
 </body>

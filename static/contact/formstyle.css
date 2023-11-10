@@ -75,3 +75,51 @@ a {
     font-weight: bold; /* Bold text */
 
 }
+
+
+/* Add or modify these styles in your CSS file */
+.back-link {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.footer {
+    margin-top: 20px; /* Adjust the margin as needed */
+    text-align: center;
+}
+
+
+/* Add your existing styles here */
+
+.contact-details {
+    margin: 20px;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.edit-btn, .delete-btn, .cancel-btn {
+    padding: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: black;
+}

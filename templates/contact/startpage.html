@@ -1,4 +1,3 @@
-<!-- contactapp/templates/contactapp/contact_list.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +24,9 @@
                 <th>No</th>
                 <th>Contact Name</th>
                 <th>Email</th>
+                <th>Notes</th>
                 <th>Time Created</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,7 +35,14 @@
                 <td>{{ contact.serial_number }}</td>
                 <td>{{ contact.contact_name }}</td>
                 <td>{{ contact.email }}</td>
+                <td>{{ contact.notes }}</td>
                 <td>{{ contact.date_created }}</td>
+                <td>
+                    <a href="{% url 'contact_detail' contact.serial_number %}">Detail</a>
+
+                    <a href="{% url 'update_contact' contact.serial_number %}">Edit</a>
+                    <a href="{% url 'delete_contact' contact.serial_number %}">Delete</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
